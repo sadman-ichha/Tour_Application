@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -7,12 +8,23 @@ import 'package:shelter/const/app_string.dart';
 import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/views/onboarding_screen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+   Future.delayed(Duration(seconds: 2), () => Get.toNamed(onboarding));
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 2), () => Get.toNamed(onboarding));
+    
     return SafeArea(
       child: Scaffold(
         body: Center(

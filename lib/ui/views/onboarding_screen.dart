@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shelter/const/app_colors.dart';
+import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/styles/style.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -98,8 +99,8 @@ class OnBoardingScreen extends StatelessWidget {
                           InkWell(
                             onTap: () {
                               if (_currentIndex == 2) {
-                                print("Closed");
-                              }else{
+                                Get.toNamed(signup);
+                              } else {
                                 _currentIndex + 1;
                               }
                             },
