@@ -54,7 +54,7 @@ class SignUpScreen extends StatelessWidget {
                   decoration: AppStyle.textFieldDecoration('Enter Password'),
                 ),
                 SizedBox(height: 80.0.h),
-                VioletButton('Create Account'),
+                VioletButton('Create Account',()=>Get.toNamed(userform)),
                 SizedBox(height: 17.0.h),
                 Center(child: Text("--OR--")),
                 SizedBox(height: 17.0.h),

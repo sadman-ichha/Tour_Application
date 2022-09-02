@@ -9,6 +9,6 @@ class AppStyle {
 
  static InputDecoration textFieldDecoration (hintText) => InputDecoration(
     hintText: hintText,
-    hintStyle: TextStyle(fontSize: 16.0.sp, fontWeight: FontWeight.w400),
+    hintStyle: TextStyle(fontSize: 16.0.sp, fontWeight: FontWeight.w400,color: Colors.black),
   );
 }

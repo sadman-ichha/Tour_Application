@@ -3,11 +3,13 @@ import 'package:shelter/ui/views/auth/log-in-screen.dart';
 import 'package:shelter/ui/views/auth/sign_up_screen.dart';
 import 'package:shelter/ui/views/onBoarding_screen.dart';
 import 'package:shelter/ui/views/splash_screen.dart';
+import 'package:shelter/ui/views/user_form.dart';
 
 const String splash = "/splash-screen";
 const String onboarding = "/onboarding-screen";
 const String signup = "/signup-screen";
 const String login = "/login-screen";
+const String userform = "/userform-screen";
 
 List<GetPage> getPages = [
   GetPage(
@@ -26,4 +28,6 @@ List<GetPage> getPages = [
     name: login,
     page: () => LogInScreen(),
   ),
+
+  GetPage(name: userform, page: ()=> UserFormScreen(),),
 ];

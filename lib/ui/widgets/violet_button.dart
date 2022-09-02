@@ -5,7 +5,8 @@ import 'package:shelter/const/app_colors.dart';
 
 class VioletButton extends StatelessWidget {
   String title;
-  VioletButton(this.title);
+  final Function onAction;
+  VioletButton(this.title, this.onAction);
 
   RxBool _value = false.obs;
 
@@ -14,6 +15,7 @@ class VioletButton extends StatelessWidget {
     return InkWell(
       onTap: () {
         _value.value = true;
+        onAction();
       },
       child: Obx(
         () => Container(
@@ -32,7 +34,7 @@ class VioletButton extends StatelessWidget {
                       fontWeight: FontWeight.w500),
                 ))
               : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "Please Wait",
@@ -42,7 +44,8 @@ class VioletButton extends StatelessWidget {
                           fontWeight: FontWeight.w400),
                     ),
                     SizedBox(width: 5.0.w),
-                    Transform.scale(scale: 0.4,
+                    Transform.scale(
+                      scale: 0.4,
                       child: CircularProgressIndicator(
                         color: Colors.white,
                       ),

@@ -48,7 +48,7 @@ class LogInScreen extends StatelessWidget {
                   decoration: AppStyle.textFieldDecoration('Enter Password'),
                 ),
                 SizedBox(height: 80.0.h),
-                VioletButton('Login'),
+                VioletButton('Login',(){}),
                 SizedBox(height: 17.0.h),
                 Center(child: Text("--OR--")),
                 SizedBox(height: 17.0.h),
