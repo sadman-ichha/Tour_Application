@@ -33,7 +33,15 @@ dependencies:
   get: ^4.6.5
   google_fonts: ^3.0.1 
   lottie: ^1.4.2  
-  dots_indicator: ^2.1.0 
+  dots_indicator: ^2.1.0
+  toggle_switch: ^2.0.1 
+  firebase_core: ^1.21.1
+  firebase_auth: ^3.7.0
+  cloud_firestore: ^3.4.6
+  firebase_storage: ^10.3.7
+  get_storage: ^2.0.3
+  syncfusion_flutter_pdfviewer: ^20.2.46-beta
+  fluttertoast: ^8.0.9
 
 
   # The following adds the Cupertino Icons font to your application.

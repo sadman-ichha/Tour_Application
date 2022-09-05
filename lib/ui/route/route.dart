@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:shelter/ui/views/auth/log-in-screen.dart';
 import 'package:shelter/ui/views/auth/sign_up_screen.dart';
 import 'package:shelter/ui/views/onBoarding_screen.dart';
+import 'package:shelter/ui/views/privacy_policy.dart';
 import 'package:shelter/ui/views/splash_screen.dart';
 import 'package:shelter/ui/views/user_form.dart';
 
@@ -10,6 +11,8 @@ const String onboarding = "/onboarding-screen";
 const String signup = "/signup-screen";
 const String login = "/login-screen";
 const String userform = "/userform-screen";
+const String privacypolicy = '/privacypolicy';
+
 
 List<GetPage> getPages = [
   GetPage(
@@ -30,4 +33,5 @@ List<GetPage> getPages = [
   ),
 
   GetPage(name: userform, page: ()=> UserFormScreen(),),
+  GetPage(name: privacypolicy , page: ()=> PrivecyPolicyScreen(),),
 ];
