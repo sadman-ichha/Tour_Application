@@ -11,6 +11,7 @@ import 'package:shelter/ui/widgets/violet_button.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class UserFormScreen extends StatelessWidget {
+  String gender = 'Male';
   TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneNumController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
@@ -105,8 +106,12 @@ class UserFormScreen extends StatelessWidget {
                   minWidth: 79.0.w,
                   minHeight: 29.0.h,
                   cornerRadius: 3.0.r,
-                  onToggle: (_) {
-                    print('switched to: $_');
+                  onToggle: (index) {
+                    if (index == 0) {
+                      gender = 'Male';
+                    } else {
+                      gender = 'Female';
+                    }
                   },
                 ),
                 SizedBox(height: 128.0.h),

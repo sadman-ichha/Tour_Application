@@ -48,7 +48,7 @@ android {
        
         applicationId "com.example.shelter"
         multiDexEnabled true
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
