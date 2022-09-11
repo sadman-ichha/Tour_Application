@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shelter/const/app_string.dart';
 import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/views/onboarding_screen.dart';
@@ -16,15 +17,25 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final box = GetStorage();
+
+  Future chooseScreen() async {
+    var userId = box.read('uid');
+    if (userId == null) {
+      Get.toNamed(onboarding);
+    } else {
+      Get.toNamed(login);
+    }
+  }
 
   @override
   void initState() {
-   Future.delayed(Duration(seconds: 2), () => Get.toNamed(onboarding));
+    Future.delayed(Duration(seconds: 2), () => chooseScreen());
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    
     return SafeArea(
       child: Scaffold(
         body: Center(

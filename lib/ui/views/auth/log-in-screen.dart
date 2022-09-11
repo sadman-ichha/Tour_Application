@@ -10,7 +10,6 @@ import 'package:shelter/ui/styles/style.dart';
 import 'package:shelter/ui/widgets/violet_button.dart';
 
 class LogInScreen extends StatelessWidget {
-
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -33,8 +32,6 @@ class LogInScreen extends StatelessWidget {
                     color: AppColors.violetColor,
                   ),
                 ),
-                
-               
                 SizedBox(height: 80.0.h),
                 TextFormField(
                   controller: _emailController,
@@ -48,7 +45,10 @@ class LogInScreen extends StatelessWidget {
                   decoration: AppStyle.textFieldDecoration('Enter Password'),
                 ),
                 SizedBox(height: 80.0.h),
-                VioletButton('Login',(){}),
+                VioletButton(
+                  'Login',
+                  () => Get.toNamed(mainhome),
+                ),
                 SizedBox(height: 17.0.h),
                 Center(child: Text("--OR--")),
                 SizedBox(height: 17.0.h),
