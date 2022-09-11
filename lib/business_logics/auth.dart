@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -15,8 +14,9 @@ class Auth {
               email: emailAddress, password: password);
 
       var authCredential = userCredential.user;
+
       if (authCredential!.uid.isNotEmpty) {
-        Fluttertoast.showToast(msg: "Registration Successfull");
+        Fluttertoast.showToast(msg: "Registration Successful");
         box.write('uid', authCredential.uid);
         Get.toNamed(userform);
       } else {

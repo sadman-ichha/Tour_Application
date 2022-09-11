@@ -1,23 +1,24 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shelter/business_logics/form.dart';
 import 'package:shelter/const/app_colors.dart';
-import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/styles/style.dart';
-import 'package:shelter/ui/views/privacy_policy.dart';
 import 'package:shelter/ui/widgets/violet_button.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class UserFormScreen extends StatelessWidget {
+
   String gender = 'Male';
+  String? dob;
+ Rx<DateTime> currentDate = DateTime.now().obs;
+
   TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneNumController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
   Rx<TextEditingController> _dobController = TextEditingController().obs;
 
-  Widget FormField(controller, keytype, hint) {
+  Widget formField(controller, keytype, hint) {
     return TextFormField(
       controller: controller,
       keyboardType: keytype,
@@ -25,19 +26,19 @@ class UserFormScreen extends StatelessWidget {
     );
   }
 
-  final currentDate = DateTime.now();
+ 
 
   _selectedDate(BuildContext context) async {
     final showDate = await showDatePicker(
       context: context,
-      initialDate: currentDate,
+      initialDate: currentDate.value,
       firstDate: DateTime(1980),
       lastDate: DateTime(2035),
     );
 
     if (showDate != null && showDate != currentDate) {
-      _dobController.value.text =
-          "${showDate.day}-${showDate.month}-${showDate.year}";
+      dob = "${showDate.day}-${showDate.month}-${showDate.year}";
+      _dobController.value.text = dob!;
     }
   }
 
@@ -70,10 +71,10 @@ class UserFormScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 50.0.h),
-                FormField(_nameController, TextInputType.name, 'Full Name'),
-                FormField(
+                formField(_nameController, TextInputType.name, 'Full Name'),
+                formField(
                     _phoneNumController, TextInputType.phone, 'Phone Number'),
-                FormField(_addressController, TextInputType.text, 'Address'),
+                formField(_addressController, TextInputType.text, 'Address'),
                 Obx(
                   () => TextFormField(
                     controller: _dobController.value,
@@ -115,7 +116,14 @@ class UserFormScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 128.0.h),
-                VioletButton('Submit', () => Get.toNamed(privacypolicy)),
+                VioletButton(
+                    'Submit',
+                    () => UsersInfo().sendFormDataToDB(
+                        _nameController.text,
+                        int.parse(_phoneNumController.text),
+                        _addressController.text,
+                        dob!,
+                        gender)),
               ],
             ),
           ),

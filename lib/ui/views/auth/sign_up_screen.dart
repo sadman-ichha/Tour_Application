@@ -56,9 +56,10 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 80.0.h),
                 VioletButton(
-                    'Create Account',
-                    () => Auth().registration(
-                        _emailController.text, _passwordController.text)),
+                  'Create Account',
+                  () => Auth().registration(
+                      _emailController.text, _passwordController.text),
+                ),
                 SizedBox(height: 17.0.h),
                 Center(child: Text("--OR--")),
                 SizedBox(height: 17.0.h),

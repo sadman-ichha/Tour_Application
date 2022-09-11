@@ -11,8 +11,7 @@ const String onboarding = "/onboarding-screen";
 const String signup = "/signup-screen";
 const String login = "/login-screen";
 const String userform = "/userform-screen";
-const String privacypolicy = '/privacypolicy';
-
+const String privacypolicy = '/privacypolicy-screen';
 
 List<GetPage> getPages = [
   GetPage(
@@ -31,7 +30,12 @@ List<GetPage> getPages = [
     name: login,
     page: () => LogInScreen(),
   ),
-
-  GetPage(name: userform, page: ()=> UserFormScreen(),),
-  GetPage(name: privacypolicy , page: ()=> PrivecyPolicyScreen(),),
+  GetPage(
+    name: userform,
+    page: () => UserFormScreen(),
+  ),
+  GetPage(
+    name: privacypolicy,
+    page: () => PrivecyPolicyScreen(),
+  ),
 ];
