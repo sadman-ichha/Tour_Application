@@ -11,7 +11,7 @@ class UserFormScreen extends StatelessWidget {
 
   String gender = 'Male';
   String? dob;
- Rx<DateTime> currentDate = DateTime.now().obs;
+  Rx<DateTime> currentDate = DateTime.now().obs;
 
   TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneNumController = TextEditingController();
@@ -26,13 +26,11 @@ class UserFormScreen extends StatelessWidget {
     );
   }
 
- 
-
   _selectedDate(BuildContext context) async {
     final showDate = await showDatePicker(
       context: context,
       initialDate: currentDate.value,
-      firstDate: DateTime(1980),
+      firstDate: DateTime(1990),
       lastDate: DateTime(2035),
     );
 
@@ -119,6 +117,7 @@ class UserFormScreen extends StatelessWidget {
                 VioletButton(
                     'Submit',
                     () => UsersInfo().sendFormDataToDB(
+                     
                         _nameController.text,
                         int.parse(_phoneNumController.text),
                         _addressController.text,

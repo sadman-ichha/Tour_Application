@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,6 +56,16 @@ class MyApp extends StatelessWidget {
           title: AppStrings.appName,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            appBarTheme: AppBarTheme(
+              color: Colors.white,
+              centerTitle: true,
+              elevation: 0.0,
+              titleTextStyle: TextStyle(
+                fontSize: 20.0.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ),
+            ),
             scaffoldBackgroundColor: AppColors.scaffoldBackgroundColors,
             textTheme: GoogleFonts.poppinsTextTheme(
               Theme.of(context).textTheme.apply(),

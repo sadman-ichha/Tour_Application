@@ -1,13 +1,10 @@
 import 'dart:async';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shelter/const/app_string.dart';
 import 'package:shelter/ui/route/route.dart';
-import 'package:shelter/ui/views/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -21,10 +18,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future chooseScreen() async {
     var userId = box.read('uid');
+
     if (userId == null) {
       Get.toNamed(onboarding);
     } else {
-      Get.toNamed(login);
+      Get.toNamed(mainhome);
     }
   }
 

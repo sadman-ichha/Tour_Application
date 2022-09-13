@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shelter/business_logics/auth.dart';
 import 'package:shelter/const/app_colors.dart';
 import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/styles/style.dart';
@@ -47,7 +48,7 @@ class LogInScreen extends StatelessWidget {
                 SizedBox(height: 80.0.h),
                 VioletButton(
                   'Login',
-                  () => Get.toNamed(mainhome),
+                  () => Auth().login(_emailController.text, _passwordController.text),
                 ),
                 SizedBox(height: 17.0.h),
                 Center(child: Text("--OR--")),

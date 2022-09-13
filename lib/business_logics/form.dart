@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shelter/ui/route/route.dart';
+import 'package:shelter/ui/views/privacy_policy.dart';
 
 class UsersInfo {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -13,6 +15,7 @@ class UsersInfo {
     String address,
     String dob,
     String gender,
+    
   ) async {
     try {
       CollectionReference _usersInfo =

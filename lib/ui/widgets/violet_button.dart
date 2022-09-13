@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shelter/const/app_colors.dart';
 
 class VioletButton extends StatelessWidget {
+  
   String title;
   final Function onAction;
   VioletButton(this.title, this.onAction);
