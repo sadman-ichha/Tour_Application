@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/widgets/drawer_items.dart';
 
 class DrawerScreen extends StatelessWidget {
@@ -27,24 +29,24 @@ class DrawerScreen extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                       color: Colors.black)),
               SizedBox(height: 32.0.h),
-              drawerItems('Support', () {}),
+              drawerItems('Support', () => Get.toNamed(support)),
               SizedBox(height: 8.0.h),
-              drawerItems('Privacy', () {}),
+              drawerItems('Privacy', () => Get.toNamed(privacy)),
               SizedBox(height: 8.0.h),
-              drawerItems('FAQ', () {}),
+              drawerItems('FAQ', () => Get.toNamed(faq)),
               SizedBox(height: 8.0.h),
               drawerItems('Rate US', () {}),
               SizedBox(height: 8.0.h),
-              drawerItems('How to use', () {}),
+              drawerItems('How to use', ()=> Get.toNamed(howtouse)),
               Expanded(child: SizedBox()),
               InkWell(
-                onTap: () {},
+                onTap: () => Get.toNamed(settings),
                 child: Text(
                   'Settings',
                   style:
                       TextStyle(fontSize: 20.0.sp, fontWeight: FontWeight.w400),
                 ),
-              )
+              ),
             ],
           ),
         ),

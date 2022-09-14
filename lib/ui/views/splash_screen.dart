@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2), () => chooseScreen());
+    Future.delayed(Duration(seconds: 1), () => chooseScreen());
     super.initState();
   }
 

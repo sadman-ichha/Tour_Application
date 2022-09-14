@@ -4,16 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shelter/const/app_colors.dart';
+import 'package:shelter/ui/views/bottom_nav_controller/pages/nav_add.dart';
+import 'package:shelter/ui/views/bottom_nav_controller/pages/nav_favorite.dart';
+import 'package:shelter/ui/views/bottom_nav_controller/pages/nav_home.dart';
 
 class BottomNavControllerScreen extends StatelessWidget {
+  
   RxInt _currentIndex = 0.obs;
 
   RxBool _drawer = false.obs;
 
   final _pages = [
-    Container(color: Colors.amber),
-    Container(color: Colors.black),
-    Container(color: Colors.blue),
+    NavHome(),
+    NavAdd(),
+    NavFavorite(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -50,7 +54,7 @@ class BottomNavControllerScreen extends StatelessWidget {
                 bottomNavigationBar: BottomNavigationBar(
                   onTap: (values) => _currentIndex.value = values,
                   currentIndex: _currentIndex.value,
-                  unselectedItemColor: Colors.black45,
+                  unselectedItemColor: Colors.black54,
                   selectedItemColor: AppColors.violetColor,
                   items: [
                     BottomNavigationBarItem(
