@@ -1,16 +1,19 @@
 import 'package:get/get.dart';
 import 'package:shelter/ui/views/auth/log-in-screen.dart';
 import 'package:shelter/ui/views/auth/sign_up_screen.dart';
+import 'package:shelter/ui/views/bottom_nav_controller/search_screen.dart';
 import 'package:shelter/ui/views/drawer_pages/faq.dart';
 import 'package:shelter/ui/views/drawer_pages/how_to_use.dart';
 import 'package:shelter/ui/views/drawer_pages/privacy.dart';
+import 'package:shelter/ui/views/drawer_pages/settings.dart';
 import 'package:shelter/ui/views/drawer_pages/support.dart';
 import 'package:shelter/ui/views/onBoarding_screen.dart';
 import 'package:shelter/ui/views/privacy_policy.dart';
 import 'package:shelter/ui/views/splash_screen.dart';
+import '../views/drawer_pages/settings.dart';
 import 'package:shelter/ui/views/user_form.dart';
 import '../views/bottom_nav_controller/nav_controller.dart';
-import '../views/drawer_pages/settings.dart';
+
 import '../views/main_home_screen.dart';
 
 const String splash = "/splash-screen";
@@ -25,7 +28,8 @@ const String support = '/support-screen';
 const String privacy = '/privacy-screen';
 const String faq = '/faq-screen';
 const String howtouse = '/how-to-use-screen';
-const String settings = '/settings-screen';
+const String setting = '/settings-screen';
+const String search = '/search-screen';
 
 List<GetPage> getPages = [
   GetPage(
@@ -60,9 +64,10 @@ List<GetPage> getPages = [
     name: bottomnavcontroller,
     page: () => BottomNavControllerScreen(),
   ),
-  GetPage(name: support, page: ()=> Support()),
-  GetPage(name: privacy, page: ()=> Privacy()),
-  GetPage(name: faq, page: ()=> Faq()),
-  GetPage(name: howtouse, page: ()=> HowToUse()),
-  GetPage(name: settings, page: ()=> Settings()),
+  GetPage(name: support, page: () => Support()),
+  GetPage(name: privacy, page: () => Privacy()),
+  GetPage(name: faq, page: () => Faq()),
+  GetPage(name: howtouse, page: () => HowToUse()),
+  GetPage(name: setting, page: () => Setting()),
+  GetPage(name: search, page: () => SearchScreen()),
 ];
