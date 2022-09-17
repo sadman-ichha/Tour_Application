@@ -3,10 +3,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/widgets/nav_home_categories.dart';
-
 import '../search_screen.dart';
 
 class NavHome extends StatelessWidget {
@@ -90,14 +88,16 @@ class NavHome extends StatelessWidget {
               ),
               SizedBox(height: 40.0.h),
               navHomeCategories('For You', () {}),
-              SizedBox(height: 16.0.h),
+              SizedBox(height: 3.0.h),
               forYou(),
               SizedBox(height: 16.h),
-              navHomeCategories('Recently Added', (){}),
-              SizedBox(height: 16.h),
+              navHomeCategories('Recently Added', () {}),
+              SizedBox(height: 3.0.h),
               recentlyAdded(),
               SizedBox(height: 16.h),
-              navHomeCategories('Top Places', (){}),
+              navHomeCategories('Top Places', () {}),
+              SizedBox(height: 5.0.h),
+              topPlaces(),
             ],
           ),
         ),
@@ -210,3 +210,24 @@ Widget recentlyAdded() {
   );
 }
 
+Widget topPlaces() {
+  return Container(
+    height: 80.0.h,
+    child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 12,
+        itemBuilder: (_, index) {
+          return Container(
+            width: 80.w,
+            height: 80.h,
+            decoration: BoxDecoration(
+              color: Color(0xFFC4C4C4),
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                  image: AssetImage('assets/images/debtakhum.jpeg'),
+                  fit: BoxFit.cover),
+            ),
+          );
+        }),
+  );
+}
