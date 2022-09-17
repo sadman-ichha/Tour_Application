@@ -5,7 +5,7 @@ import 'package:shelter/const/app_colors.dart';
 
 Widget navHomeCategories(String categoryName, onClick) {
   return Padding(
-    padding: EdgeInsets.only(left: 37.0.w, right: 40.0.w),
+    padding: EdgeInsets.only(left:28.0.w, right: 28.0.w),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

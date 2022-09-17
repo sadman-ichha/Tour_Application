@@ -22,77 +22,84 @@ class NavHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            AspectRatio(
-              aspectRatio: 3.5,
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  height: 155.0.h,
-                  onPageChanged: (currentIndex, customPageChangedReason) {
-                    _currentIndex.value = currentIndex;
-                  },
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              AspectRatio(
+                aspectRatio: 3.5,
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: 155.0.h,
+                    onPageChanged: (currentIndex, customPageChangedReason) {
+                      _currentIndex.value = currentIndex;
+                    },
+                  ),
+                  items: _carouselImages.map((images) {
+                    return Container(
+                      margin: EdgeInsets.only(left: 10.0),
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        image: DecorationImage(
+                          image: AssetImage(images),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
-                items: _carouselImages.map((images) {
-                  return Container(
-                    margin: EdgeInsets.only(left: 10.0),
+              ),
+              SizedBox(height: 5.h),
+              Obx(
+                () => DotsIndicator(
+                  dotsCount: _carouselImages.length,
+                  position: _currentIndex.value.toDouble(),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: 53.w, right: 52.w, top: 10.h, bottom: 10.h),
+                child: InkWell(
+                  onTap: () => Get.toNamed(search),
+                  child: Container(
+                    height: 45.0.h,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
-                      image: DecorationImage(
-                        image: AssetImage(images),
-                        fit: BoxFit.cover,
+                      color: Colors.white38,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(6.r),
                       ),
                     ),
-                  );
-                }).toList(),
-              ),
-            ),
-            SizedBox(height: 5.h),
-            Obx(
-              () => DotsIndicator(
-                dotsCount: _carouselImages.length,
-                position: _currentIndex.value.toDouble(),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: 53.w, right: 52.w, top: 10.h, bottom: 10.h),
-              child: InkWell(
-                onTap: () => Get.toNamed(search),
-                child: Container(
-                  height: 45.0.h,
-                  decoration: BoxDecoration(
-                    color: Colors.white38,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(6.r),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 20.w),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.search_outlined,
-                          size: 27.0.w,
-                        ),
-                        SizedBox(width: 15.0.w),
-                        Text(
-                          'Search for your next tour',
-                          style: TextStyle(
-                              fontSize: 15.0.sp, fontWeight: FontWeight.w400),
-                        ),
-                      ],
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 20.w),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.search_outlined,
+                            size: 27.0.w,
+                          ),
+                          SizedBox(width: 15.0.w),
+                          Text(
+                            'Search for your next tour',
+                            style: TextStyle(
+                                fontSize: 15.0.sp, fontWeight: FontWeight.w400),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 61.0.h),
-            navHomeCategories('For You', () {}),
-            SizedBox(height: 21.0.h),
-            forYou(),
-            
-          ],
+              SizedBox(height: 40.0.h),
+              navHomeCategories('For You', () {}),
+              SizedBox(height: 16.0.h),
+              forYou(),
+              SizedBox(height: 16.h),
+              navHomeCategories('Recently Added', (){}),
+              SizedBox(height: 16.h),
+              recentlyAdded(),
+              SizedBox(height: 16.h),
+              navHomeCategories('Top Places', (){}),
+            ],
+          ),
         ),
       ),
     );
@@ -101,24 +108,105 @@ class NavHome extends StatelessWidget {
 
 Widget forYou() {
   return Container(
-    height: 180.0.h,
+    height: 170.0.h,
     child: ListView.builder(
-      scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.horizontal,
         itemCount: 12,
         itemBuilder: (_, index) {
           return Padding(
-            padding:  EdgeInsets.only(right: 12.w),
-            child: Container(
-              width: 100.w,
+            padding: EdgeInsets.only(right: 12.w),
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                width: 100.w,
                 height: 180.h,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.all(
+                decoration: BoxDecoration(
+                  color: Color(0xFFC4C4C4),
+                  borderRadius: BorderRadius.all(
                     Radius.circular(7.r),
-              ),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7.0.r),
+                          topRight: Radius.circular(7.0.r)),
+                      child: Image.asset(
+                        'assets/images/debtakhum.jpeg',
+                        height: 115.0.h,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: 2.5.h),
+                    Text(
+                      'Title',
+                      style: TextStyle(fontSize: 15.sp),
+                    ),
+                    Text(
+                      'Cost',
+                      style: TextStyle(
+                          fontSize: 15.sp, fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
         }),
   );
 }
+
+Widget recentlyAdded() {
+  return Container(
+    height: 170.0.h,
+    child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 12,
+        itemBuilder: (_, index) {
+          return Padding(
+            padding: EdgeInsets.only(right: 12.w),
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                width: 100.w,
+                height: 180.h,
+                decoration: BoxDecoration(
+                  color: Color(0xFFC4C4C4),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(7.r),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7.0.r),
+                          topRight: Radius.circular(7.0.r)),
+                      child: Image.asset(
+                        'assets/images/debtakhum.jpeg',
+                        height: 115.0.h,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: 2.5.h),
+                    Text(
+                      'Title',
+                      style: TextStyle(fontSize: 15.sp),
+                    ),
+                    Text(
+                      'Cost',
+                      style: TextStyle(
+                          fontSize: 15.sp, fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }),
+  );
+}
+
