@@ -9,12 +9,32 @@ class SeeAll extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('See All')),
       body: GridView.builder(
-          gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemCount: 20,
+          // ignore: prefer_const_constructors
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 10.0,
+            childAspectRatio: 0.7,
+          ),
           itemBuilder: (_, index) {
+            
             return Container(
-              height: 100.h,
-              color: Colors.blue,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(7.0.r),
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius : BorderRadius.all(
+                    Radius.circular(7.r),
+                  ),
+                child: Image.asset(
+                  'assets/images/debtakhum.jpeg',
+                  fit: BoxFit.cover,
+                  height: 115.0.h,
+                ),
+              ),
             );
           }),
     );

@@ -12,6 +12,7 @@ import 'package:shelter/ui/views/onBoarding_screen.dart';
 import 'package:shelter/ui/views/privacy_policy.dart';
 import 'package:shelter/ui/views/splash_screen.dart';
 import '../views/bottom_nav_controller/pages/details_screen.dart';
+import '../views/bottom_nav_controller/pages/nav_add_last_step.dart';
 import '../views/drawer_pages/settings.dart';
 import 'package:shelter/ui/views/user_form.dart';
 import '../views/bottom_nav_controller/nav_controller.dart';
@@ -33,6 +34,8 @@ const String setting = '/settings-screen';
 const String search = '/search-screen';
 const String detailsscreen = '/details-screen';
 const String seeall = '/see-all-screen';
+const String navaddlaststep = '/nav-add-last-step-screen';
+
 
 List<GetPage> getPages = [
   GetPage(
@@ -75,4 +78,5 @@ List<GetPage> getPages = [
   GetPage(name: search, page: () => SearchScreen()),
   GetPage(name: detailsscreen, page: () => DetailsScreen()),
   GetPage(name: seeall, page: () => SeeAll()),
+  GetPage(name: navaddlaststep, page: ()=> NavAddLastStep())
 ];
