@@ -10,10 +10,10 @@ import 'package:shelter/ui/views/drawer_pages/support.dart';
 import 'package:shelter/ui/views/onBoarding_screen.dart';
 import 'package:shelter/ui/views/privacy_policy.dart';
 import 'package:shelter/ui/views/splash_screen.dart';
+import '../views/bottom_nav_controller/pages/details_screen.dart';
 import '../views/drawer_pages/settings.dart';
 import 'package:shelter/ui/views/user_form.dart';
 import '../views/bottom_nav_controller/nav_controller.dart';
-
 import '../views/main_home_screen.dart';
 
 const String splash = "/splash-screen";
@@ -30,6 +30,7 @@ const String faq = '/faq-screen';
 const String howtouse = '/how-to-use-screen';
 const String setting = '/settings-screen';
 const String search = '/search-screen';
+const String detailsscreen = '/details-screen';
 
 List<GetPage> getPages = [
   GetPage(
@@ -70,4 +71,5 @@ List<GetPage> getPages = [
   GetPage(name: howtouse, page: () => HowToUse()),
   GetPage(name: setting, page: () => Setting()),
   GetPage(name: search, page: () => SearchScreen()),
+  GetPage(name: detailsscreen, page: () => DetailsScreen()),
 ];

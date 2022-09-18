@@ -87,7 +87,7 @@ class NavHome extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40.0.h),
-              navHomeCategories('For You', () {}),
+              navHomeCategories('For You', (){}),
               SizedBox(height: 3.0.h),
               forYou(),
               SizedBox(height: 16.h),
@@ -116,7 +116,7 @@ Widget forYou() {
           return Padding(
             padding: EdgeInsets.only(right: 12.w),
             child: InkWell(
-              onTap: () {},
+              onTap: ()=> Get.toNamed(detailsscreen),
               child: Container(
                 width: 100.w,
                 height: 180.h,
