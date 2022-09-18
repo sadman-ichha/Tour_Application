@@ -14,7 +14,7 @@ Widget navHomeCategories(String categoryName, onClick) {
           style: TextStyle(fontSize: 16.0.sp, fontWeight: FontWeight.w500),
         ),
         InkWell(
-          onTap: () {},
+          onTap: onClick,
           child: Text(
             "See All",
             style: TextStyle(

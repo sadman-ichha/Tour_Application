@@ -88,7 +88,7 @@ class NavHome extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40.0.h),
-              navHomeCategories('For You', ()=> SeeAll()),
+              navHomeCategories('For You', ()=> Get.toNamed(seeall)),
               SizedBox(height: 3.0.h),
               forYou(),
               SizedBox(height: 16.h),

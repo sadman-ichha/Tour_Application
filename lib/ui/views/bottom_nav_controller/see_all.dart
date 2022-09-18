@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SeeAll extends StatelessWidget {
   const SeeAll({Key? key}) : super(key: key);
@@ -11,7 +12,10 @@ class SeeAll extends StatelessWidget {
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (_, index) {
-            return Container();
+            return Container(
+              height: 100.h,
+              color: Colors.blue,
+            );
           }),
     );
   }
