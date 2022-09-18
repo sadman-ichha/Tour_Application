@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:shelter/ui/views/auth/log-in-screen.dart';
 import 'package:shelter/ui/views/auth/sign_up_screen.dart';
 import 'package:shelter/ui/views/bottom_nav_controller/search_screen.dart';
+import 'package:shelter/ui/views/bottom_nav_controller/see_all.dart';
 import 'package:shelter/ui/views/drawer_pages/faq.dart';
 import 'package:shelter/ui/views/drawer_pages/how_to_use.dart';
 import 'package:shelter/ui/views/drawer_pages/privacy.dart';
@@ -31,6 +32,7 @@ const String howtouse = '/how-to-use-screen';
 const String setting = '/settings-screen';
 const String search = '/search-screen';
 const String detailsscreen = '/details-screen';
+const String seeall = '/see-all-screen';
 
 List<GetPage> getPages = [
   GetPage(
@@ -72,4 +74,5 @@ List<GetPage> getPages = [
   GetPage(name: setting, page: () => Setting()),
   GetPage(name: search, page: () => SearchScreen()),
   GetPage(name: detailsscreen, page: () => DetailsScreen()),
+  GetPage(name: seeall, page: () => SeeAll()),
 ];

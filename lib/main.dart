@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               centerTitle: true,
               elevation: 0.0,
+              foregroundColor:  Colors.black ,
               titleTextStyle: TextStyle(
                 fontSize: 20.0.sp,
                 fontWeight: FontWeight.w400,

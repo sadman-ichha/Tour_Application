@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/widgets/nav_home_categories.dart';
 import '../search_screen.dart';
+import '../see_all.dart';
 
 class NavHome extends StatelessWidget {
   final RxInt _currentIndex = 0.obs;
@@ -87,7 +88,7 @@ class NavHome extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40.0.h),
-              navHomeCategories('For You', (){}),
+              navHomeCategories('For You', ()=> SeeAll()),
               SizedBox(height: 3.0.h),
               forYou(),
               SizedBox(height: 16.h),

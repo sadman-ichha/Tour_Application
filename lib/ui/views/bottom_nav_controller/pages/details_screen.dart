@@ -1,13 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../widgets/details_heading_description.dart';
 
 class DetailsScreen extends StatelessWidget {
+
   RxInt _currentIndex = 0.obs;
+  
   final List _carouselImages = [
     'assets/images/cover-one.jpeg',
     'assets/images/cover-two.jpeg',

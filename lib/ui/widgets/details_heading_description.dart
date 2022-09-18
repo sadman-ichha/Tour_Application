@@ -14,9 +14,12 @@ Widget detailsHeadingDescription(String title,String description) {
           style: TextStyle(fontSize: 14.0.sp, fontWeight: FontWeight.w600),
         ),
        
-        Text(
-          description,
-          style: TextStyle(fontSize: 14.0.sp, fontWeight: FontWeight.w300),
+        Align(
+          alignment: AlignmentDirectional.topStart,
+          child: Text(
+            description,
+            style: TextStyle(fontSize: 14.0.sp, fontWeight: FontWeight.w300),
+          ),
         ),
         SizedBox(height: 14.0.h),
       ],
