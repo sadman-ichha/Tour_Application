@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shelter/business_logics/form.dart';
-import 'package:shelter/const/app_colors.dart';
-import 'package:shelter/ui/styles/style.dart';
-import 'package:shelter/ui/widgets/violet_button.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-class UserFormScreen extends StatelessWidget {
+import '../../../business_logics/form.dart';
+import '../../../const/app_colors.dart';
+import '../../styles/style.dart';
+import '../../widgets/violet_button.dart';
 
+class ProfileScreen extends StatelessWidget {
   String gender = 'Male';
   String? dob;
   Rx<DateTime> currentDate = DateTime.now().obs;
@@ -44,31 +44,23 @@ class UserFormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Text("Profile",
+              style: TextStyle(
+                fontSize: 24.0.sp,
+                fontWeight: FontWeight.w400,
+              )),
+        ),
         body: Padding(
-          padding: EdgeInsets.only(left: 30.0.w, right: 30.0.w, top: 40.0.h),
+          padding: EdgeInsets.only(left: 30.0.w, right: 30.0.w, top: 26.0.h),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Tell Us More About You.",
-                  style: TextStyle(
-                    fontSize: 31.0.sp,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.violetColor,
-                  ),
-                ),
-                SizedBox(height: 8.0.h),
-                Text(
-                  "We will not share your information outside this application.",
-                  style: TextStyle(
-                    fontSize: 16.0.sp,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(height: 50.0.h),
+                
                 formField(_nameController, TextInputType.name, 'Full Name'),
                 formField(
                     _phoneNumController, TextInputType.phone, 'Phone Number'),
@@ -117,7 +109,6 @@ class UserFormScreen extends StatelessWidget {
                 VioletButton(
                     'Submit',
                     () => UsersInfo().sendFormDataToDB(
-                     
                         _nameController.text,
                         int.parse(_phoneNumController.text),
                         _addressController.text,
@@ -127,7 +118,6 @@ class UserFormScreen extends StatelessWidget {
             ),
           ),
         ),
-      
       ),
     );
   }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shelter/ui/views/drawer_pages/profile.dart';
 import 'package:shelter/ui/widgets/drawer_items.dart';
+
+import '../../route/route.dart';
 
 class Setting extends StatelessWidget {
   RxBool _darkMode = false.obs;
@@ -34,14 +37,19 @@ class Setting extends StatelessWidget {
               child: Column(
                 children: [
                   TextButton(
-                    onPressed: () {},
-                    child: Text("Bangla",
-                    
-                    
-                    )),
+                      onPressed: () {},
+                      child: Text("Bangla",
+                          style: TextStyle(
+                            fontSize: 17.0.sp,
+                            fontWeight: FontWeight.w300,
+                          ))),
                   TextButton(
                     onPressed: () {},
-                    child: Text("English"),
+                    child: Text("English",
+                        style: TextStyle(
+                          fontSize: 17.0.sp,
+                          fontWeight: FontWeight.w300,
+                        )),
                   ),
                 ],
               ),
@@ -52,44 +60,46 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text("Settings",
-            style: TextStyle(
-              fontSize: 24.0.sp,
-              fontWeight: FontWeight.w400,
-            )),
-      ),
-      body: Padding(
-        padding: EdgeInsets.only(left: 33.0.w, right: 33.0.w, top: 30.0.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Dark Mode",
-                  style:
-                      TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
-                ),
-                Obx(
-                  () => Switch(
-                      value: _darkMode.value,
-                      onChanged: (bool values) {
-                        _darkMode.value = values;
-                      }),
-                )
-              ],
-            ),
-            drawerItems("Profile", () {}),
-            SizedBox(height: 11.0.h),
-            drawerItems("Languages", () =>_changeLanguage(context)),
-            SizedBox(height: 11.0.h),
-            drawerItems("LogOut", () => _logOut(context)),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Text("Settings",
+              style: TextStyle(
+                fontSize: 24.0.sp,
+                fontWeight: FontWeight.w400,
+              )),
+        ),
+        body: Padding(
+          padding: EdgeInsets.only(left: 33.0.w, right: 33.0.w, top: 30.0.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Dark Mode",
+                    style:
+                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
+                  ),
+                  Obx(
+                    () => Switch(
+                        value: _darkMode.value,
+                        onChanged: (bool values) {
+                          _darkMode.value = values;
+                        }),
+                  )
+                ],
+              ),
+              drawerItems("Profile",()=> Get.toNamed(userprofile)),
+              SizedBox(height: 11.0.h),
+              drawerItems("Languages", () => _changeLanguage(context)),
+              SizedBox(height: 11.0.h),
+              drawerItems("LogOut", () => _logOut(context)),
+            ],
+          ),
         ),
       ),
     );

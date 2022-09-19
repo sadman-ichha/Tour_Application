@@ -43,11 +43,13 @@ class MainHomeScreen extends StatelessWidget {
         _exitDialog(context);
         return Future.value(false);
       },
-      child: Scaffold(
-        body: Stack(children: [
-          DrawerScreen(),
-          BottomNavControllerScreen(),
-        ]),
+      child: SafeArea(
+        child: Scaffold(
+          body: Stack(children: [
+            DrawerScreen(),
+            BottomNavControllerScreen(),
+          ]),
+        ),
       ),
     );
   }
