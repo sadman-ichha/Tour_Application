@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -5,10 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:shelter/const/app_colors.dart';
 import 'package:shelter/const/app_string.dart';
 import 'package:shelter/ui/route/route.dart';
+import 'package:shelter/ui/theme/app_theme.dart';
 import 'package:shelter/ui/views/splash_screen.dart';
 
 void main() async {
@@ -18,6 +19,7 @@ void main() async {
 }
 
 class App extends StatelessWidget {
+  // ignore: prefer_final_fields
   Future<FirebaseApp> _initialize = Firebase.initializeApp(
     name: "Shelter",
     options: FirebaseOptions(
@@ -55,23 +57,9 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: AppStrings.appName,
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(
-              color: Colors.white,
-              centerTitle: true,
-              elevation: 0.0,
-              foregroundColor:  Colors.black ,
-              titleTextStyle: TextStyle(
-                fontSize: 20.0.sp,
-                fontWeight: FontWeight.w400,
-                color: Colors.black,
-              ),
-            ),
-            scaffoldBackgroundColor: AppColors.scaffoldBackgroundColors,
-            textTheme: GoogleFonts.poppinsTextTheme(
-              Theme.of(context).textTheme.apply(),
-            ),
-          ),
+          theme: AppTheme().lightTheme(context),
+          darkTheme: AppTheme().darkTheme(context),
+          themeMode: ThemeMode.system,
           initialRoute: splash,
           getPages: getPages,
           home: SplashScreen(),
