@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shelter/ui/theme/app_theme.dart';
@@ -24,7 +27,14 @@ class Setting extends StatelessWidget {
                 children: [
                   ElevatedButton(
                       onPressed: () => Get.back(), child: Text("No")),
-                  ElevatedButton(onPressed: () {}, child: Text("Yes")),
+                  ElevatedButton(
+                      onPressed: () async {
+                        await FirebaseAuth.instance.signOut().then((value) =>
+                            Fluttertoast.showToast(msg: "Logout Successfull."));
+                        await box.remove('uid');
+                        Get.toNamed(splash);
+                      },
+                      child: Text("Yes")),
                 ],
               ));
         });
@@ -107,13 +117,6 @@ class Setting extends StatelessWidget {
               drawerItems("Languages", () => _changeLanguage(context)),
               SizedBox(height: 11.0.h),
               drawerItems("LogOut", () => _logOut(context)),
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: Get.isDarkMode== false ? Colors.blue : Colors.amber ,
-                ) ,
-              ),
             ],
           ),
         ),
