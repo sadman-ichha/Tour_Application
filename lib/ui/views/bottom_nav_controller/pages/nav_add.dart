@@ -13,7 +13,7 @@ class NavAdd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      
       body: SingleChildScrollView(
         child: Padding(
           padding:  EdgeInsets.only(left: 25.0.w,right: 25.0.w,top: 10.0.h),

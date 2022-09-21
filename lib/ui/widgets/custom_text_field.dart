@@ -11,7 +11,7 @@ Widget customTextField(String title, {maxLine}) {
       ),
       Container(
         decoration: BoxDecoration(
-          color: Color(0xFFE9EBED),
+          color: Color(0xFFC4C4C4),
           borderRadius: BorderRadius.all(
             Radius.circular(7.r),
           ),

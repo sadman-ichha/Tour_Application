@@ -2,14 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
-import 'package:shelter/const/app_colors.dart';
 import 'package:shelter/ui/views/bottom_nav_controller/pages/nav_add.dart';
 import 'package:shelter/ui/views/bottom_nav_controller/pages/nav_favorite.dart';
 import 'package:shelter/ui/views/bottom_nav_controller/pages/nav_home.dart';
 
 class BottomNavControllerScreen extends StatelessWidget {
-  
   RxInt _currentIndex = 0.obs;
 
   RxBool _drawer = false.obs;
@@ -32,13 +31,19 @@ class BottomNavControllerScreen extends StatelessWidget {
             child: SafeArea(
               child: Scaffold(
                 appBar: AppBar(
-                  title: Text('Shelter'),
+                  title: Text(
+                    'Shelter',
+                    style: TextStyle(
+                      fontSize: 23.4.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                   leading: _drawer.value == false
                       ? IconButton(
                           onPressed: () => _drawer.value = true,
                           icon: Icon(
                             Icons.menu_outlined,
-                            color: Colors.black,
+                            
                           ),
                         )
                       : IconButton(
@@ -47,15 +52,15 @@ class BottomNavControllerScreen extends StatelessWidget {
                           },
                           icon: Icon(
                             Icons.close_outlined,
-                            color: Colors.black,
+                            // color: Colors.black,
                           ),
                         ),
                 ),
                 bottomNavigationBar: BottomNavigationBar(
                   onTap: (values) => _currentIndex.value = values,
                   currentIndex: _currentIndex.value,
-                  unselectedItemColor: Colors.black54,
-                  selectedItemColor: AppColors.violetColor,
+                  // unselectedItemColor: Colors.black54,
+                  // selectedItemColor: AppColors.violetColor,
                   items: [
                     BottomNavigationBarItem(
                       icon: Icon(Icons.home_outlined),

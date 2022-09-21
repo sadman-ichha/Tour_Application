@@ -45,6 +45,7 @@ class MainHomeScreen extends StatelessWidget {
       },
       child: SafeArea(
         child: Scaffold(
+        
           body: Stack(children: [
             DrawerScreen(),
             BottomNavControllerScreen(),

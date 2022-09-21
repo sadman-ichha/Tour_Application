@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shelter/ui/views/drawer_pages/profile.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:shelter/ui/theme/app_theme.dart';
 import 'package:shelter/ui/widgets/drawer_items.dart';
 
 import '../../route/route.dart';
 
 class Setting extends StatelessWidget {
   RxBool _darkMode = false.obs;
+
+  GetStorage? isDark;
+  final box = GetStorage();
 
   Future _logOut(context) async {
     return showDialog(
@@ -63,7 +67,6 @@ class Setting extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
           elevation: 0,
           title: Text("Settings",
               style: TextStyle(
@@ -89,11 +92,18 @@ class Setting extends StatelessWidget {
                         value: _darkMode.value,
                         onChanged: (bool values) {
                           _darkMode.value = values;
+
+                          Get.changeTheme(
+                            _darkMode.value == false
+                                ? AppTheme().lightTheme(context)
+                                : AppTheme().darkTheme(context),
+                          );
+                          box.write("isDark", _darkMode.value);
                         }),
                   )
                 ],
               ),
-              drawerItems("Profile",()=> Get.toNamed(userprofile)),
+              drawerItems("Profile", () => Get.toNamed(userprofile)),
               SizedBox(height: 11.0.h),
               drawerItems("Languages", () => _changeLanguage(context)),
               SizedBox(height: 11.0.h),

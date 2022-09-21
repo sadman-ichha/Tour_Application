@@ -22,12 +22,13 @@ class DrawerScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 32.0.sp,
                       fontWeight: FontWeight.w500,
-                      color: Colors.black)),
+                     )),
               Text("Travel Agency",
                   style: TextStyle(
                       fontSize: 15.0.sp,
                       fontWeight: FontWeight.w300,
-                      color: Colors.black)),
+                      // color: Colors.black,
+                      )),
               SizedBox(height: 32.0.h),
               drawerItems('Support', () => Get.toNamed(support)),
               SizedBox(height: 8.0.h),
@@ -37,7 +38,7 @@ class DrawerScreen extends StatelessWidget {
               SizedBox(height: 8.0.h),
               drawerItems('Rate US', () {}),
               SizedBox(height: 8.0.h),
-              drawerItems('How to use', ()=> Get.toNamed(howtouse)),
+              drawerItems('How to use', () => Get.toNamed(howtouse)),
               Expanded(child: SizedBox()),
               InkWell(
                 onTap: () => Get.toNamed(setting),

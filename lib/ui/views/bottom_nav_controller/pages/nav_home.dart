@@ -21,6 +21,7 @@ class NavHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+      
         body: SingleChildScrollView(
           child: Column(
             children: [
