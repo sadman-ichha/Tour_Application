@@ -51,16 +51,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   final box = GetStorage();
-
-    // ThemeMode themeCheck() {
-    //   if (box == false) {
-    //      AppTheme().lightTheme(context);
-    //   } else{
-    //     AppTheme().darkTheme(context);
-    //   }
-    // }
-
     return ScreenUtilInit(
       designSize: Size(428, 926),
       builder: (context, child) {
@@ -69,7 +59,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppTheme().lightTheme(context),
           darkTheme: AppTheme().darkTheme(context),
-          themeMode: box == ,
+          themeMode: ThemeMode.system,
           initialRoute: splash,
           getPages: getPages,
           home: SplashScreen(),

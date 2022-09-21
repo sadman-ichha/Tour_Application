@@ -98,7 +98,6 @@ class Setting extends StatelessWidget {
                                 ? AppTheme().lightTheme(context)
                                 : AppTheme().darkTheme(context),
                           );
-                          box.write("isDark", _darkMode.value);
                         }),
                   )
                 ],
@@ -108,6 +107,13 @@ class Setting extends StatelessWidget {
               drawerItems("Languages", () => _changeLanguage(context)),
               SizedBox(height: 11.0.h),
               drawerItems("LogOut", () => _logOut(context)),
+              Container(
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                  color: Get.isDarkMode== false ? Colors.blue : Colors.amber ,
+                ) ,
+              ),
             ],
           ),
         ),
