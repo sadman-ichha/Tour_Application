@@ -3,5 +3,12 @@ Map<String, String> eng = {
   "darkMode": "Dark Mode",
   "profile": "Profile",
   "language": "Languages",
-  "logOut": "LogOut",
+  "logout": "LogOut",
+
+  "settings": "Settings",
+
+  "home": "Home",
+  "add": "Add",
+  "favorite": "Favorite",
+
 };

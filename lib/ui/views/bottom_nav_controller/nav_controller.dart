@@ -64,12 +64,12 @@ class BottomNavControllerScreen extends StatelessWidget {
                   items: [
                     BottomNavigationBarItem(
                       icon: Icon(Icons.home_outlined),
-                      label: 'Home',
+                      label: "home".tr,
                     ),
                     BottomNavigationBarItem(
-                        icon: Icon(Icons.add_outlined), label: 'Add'),
+                        icon: Icon(Icons.add_outlined), label: 'add'.tr),
                     BottomNavigationBarItem(
-                        icon: Icon(Icons.favorite_outlined), label: 'Favorite'),
+                        icon: Icon(Icons.favorite_outlined), label: 'favorite'.tr),
                   ],
                 ),
                 body: _pages[_currentIndex.value],

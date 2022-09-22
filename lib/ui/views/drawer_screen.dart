@@ -18,7 +18,7 @@ class DrawerScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Shelter",
+              Text("appName".tr,
                   style: TextStyle(
                       fontSize: 32.0.sp,
                       fontWeight: FontWeight.w500,
@@ -43,7 +43,7 @@ class DrawerScreen extends StatelessWidget {
               InkWell(
                 onTap: () => Get.toNamed(setting),
                 child: Text(
-                  'Settings',
+                  'settings'.tr,
                   style:
                       TextStyle(fontSize: 20.0.sp, fontWeight: FontWeight.w400),
                 ),

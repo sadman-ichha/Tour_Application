@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           translations: AppLanguages(),
           locale: Get.deviceLocale,
-          fallbackLocale: Locale("en_US"),
+          fallbackLocale: Locale("en","US"),
           theme: AppTheme().lightTheme(context),
           darkTheme: AppTheme().darkTheme(context),
           themeMode: ThemeMode.system,

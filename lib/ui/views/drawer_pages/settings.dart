@@ -51,20 +51,20 @@ class Setting extends StatelessWidget {
               child: Column(
                 children: [
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () => Get.updateLocale(Locale('bn', 'BD'))
+                          .then((value) => Get.back()),
                       child: Text("Bangla",
                           style: TextStyle(
                             fontSize: 17.0.sp,
                             fontWeight: FontWeight.w300,
                           ))),
                   TextButton(
-                    onPressed: () {},
-                    child: Text("English",
-                        style: TextStyle(
-                          fontSize: 17.0.sp,
-                          fontWeight: FontWeight.w300,
-                        )),
-                  ),
+                      onPressed: () => Get.updateLocale(Locale("en", "US")).then((value) => Get.back()),
+                      child: Text("English",
+                          style: TextStyle(
+                            fontSize: 17.0.sp,
+                            fontWeight: FontWeight.w300,
+                          ))),
                 ],
               ),
             ),
@@ -93,7 +93,7 @@ class Setting extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Dark Mode",
+                    "darkMode".tr,
                     style:
                         TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
                   ),
@@ -112,11 +112,11 @@ class Setting extends StatelessWidget {
                   )
                 ],
               ),
-              drawerItems("Profile", () => Get.toNamed(userprofile)),
+              drawerItems("profile".tr, () => Get.toNamed(userprofile)),
               SizedBox(height: 11.0.h),
-              drawerItems("Languages", () => _changeLanguage(context)),
+              drawerItems("language".tr, () => _changeLanguage(context)),
               SizedBox(height: 11.0.h),
-              drawerItems("LogOut", () => _logOut(context)),
+              drawerItems("logout".tr, () => _logOut(context)),
             ],
           ),
         ),
