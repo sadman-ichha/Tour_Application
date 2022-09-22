@@ -12,6 +12,8 @@ import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/theme/app_theme.dart';
 import 'package:shelter/ui/views/splash_screen.dart';
 
+import 'business_logics/app_languages.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
@@ -57,6 +59,9 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: AppStrings.appName,
           debugShowCheckedModeBanner: false,
+          translations: AppLanguages(),
+          locale: Get.deviceLocale,
+          fallbackLocale: Locale("en_US"),
           theme: AppTheme().lightTheme(context),
           darkTheme: AppTheme().darkTheme(context),
           themeMode: ThemeMode.system,
