@@ -6,18 +6,18 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class Privacy extends StatelessWidget {
   RxBool _loaded = false.obs;
-  PdfViewerController? _pdfViewerController;
+  // PdfViewerController? _pdfViewerController;
 
   Future getData() async {
     var fireStore = FirebaseFirestore.instance;
     final querySnapshot =
-        await fireStore.collection("privacy").doc("00001111").snapshots();
+        await fireStore.collection("privacy").doc("00001111").get();
     return querySnapshot;
   }
 
-  showPrivacy(data) {
+ showPrivacy(data) {
     return SfPdfViewer.network(
-      data["url"],
+      data['url'],
       onDocumentLoaded: (PdfDocumentLoadedDetails details) {
         _loaded.value = true;
       },
@@ -40,9 +40,9 @@ class Privacy extends StatelessWidget {
             builder: (BuildContext data, AsyncSnapshot snapshot) {
               var data = snapshot.data;
               if (!snapshot.hasData) {
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator());
               } else {
                 return showPrivacy(data);
               }
