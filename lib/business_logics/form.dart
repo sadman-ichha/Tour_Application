@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shelter/ui/route/route.dart';
-import 'package:shelter/ui/views/privacy_policy.dart';
+
 
 class UsersInfo {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -19,13 +18,13 @@ class UsersInfo {
   ) async {
     try {
       CollectionReference _usersInfo =
-          FirebaseFirestore.instance.collection('users-from-data');
+          FirebaseFirestore.instance.collection('users-form-data');
       _usersInfo.doc(_auth.currentUser!.email).set({
-        'Name': name,
-        'Phone': phone,
-        'Address': address,
-        'Dob': dob,
-        'Gender': gender,
+        'name': name,
+        'phone': phone,
+        'address': address,
+        'dob': dob,
+        'gender': gender,
       }).whenComplete(() {
         Fluttertoast.showToast(msg: 'Added Successfully');
         Get.toNamed(privacypolicy);
