@@ -25,28 +25,30 @@ class HowToUse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text("How to use",
-            style: TextStyle(
-              fontSize: 24.0.sp,
-              fontWeight: FontWeight.w400,
-            )),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Text("How to use",
+              style: TextStyle(
+                fontSize: 24.0.sp,
+                fontWeight: FontWeight.w400,
+              )),
+        ),
+        body: FutureBuilder(
+            future: getVideo(),
+            builder: (BuildContext video, AsyncSnapshot snapshot) {
+              var video = snapshot.data;
+              if (!snapshot.hasData) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: CircularProgressIndicator());
+              } else {
+                return videoView(video);
+              }
+            }),
       ),
-      body: FutureBuilder(
-          future: getVideo(),
-          builder: (BuildContext video, AsyncSnapshot snapshot) {
-            var video = snapshot.data;
-            if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: CircularProgressIndicator());
-            } else {
-              return videoView(video);
-            }
-          }),
     );
   }
 }
