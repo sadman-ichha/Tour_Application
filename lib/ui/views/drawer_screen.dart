@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:shelter/ui/route/route.dart';
 import 'package:shelter/ui/widgets/drawer_items.dart';
 
@@ -36,7 +37,9 @@ class DrawerScreen extends StatelessWidget {
               SizedBox(height: 8.0.h),
               drawerItems('FAQ', () => Get.toNamed(faq)),
               SizedBox(height: 8.0.h),
-              drawerItems('Rate US', () {}),
+              drawerItems('Rate US', ()=> LaunchReview.launch(
+                androidAppId: "com.example.shelter"
+              )),
               SizedBox(height: 8.0.h),
               drawerItems('How to use', () => Get.toNamed(howtouse)),
               Expanded(child: SizedBox()),

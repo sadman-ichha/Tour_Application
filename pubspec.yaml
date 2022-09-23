@@ -44,6 +44,8 @@ dependencies:
   fluttertoast: ^8.0.9
   carousel_slider: ^4.1.1
   image_picker: ^0.8.5+3
+  launch_review: ^3.0.1
+  better_player: ^0.0.83
 
 
   # The following adds the Cupertino Icons font to your application.
