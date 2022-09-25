@@ -1,8 +1,14 @@
 import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shelter/ui/styles/style.dart';
 import '../../../widgets/custom_text_field.dart';
 import '../../../widgets/violet_button.dart';
 
@@ -27,17 +33,65 @@ class NavAddLastStep extends StatefulWidget {
 class _NavAddLastStepState extends State<NavAddLastStep> {
   TextEditingController _phoneController = TextEditingController();
   Rx<TextEditingController> _dateTimeController = TextEditingController().obs;
-  Future multipleImagePicker() async {
+
+  final ImagePicker _picker = ImagePicker();
+  List<XFile>? images;
+  Rx<DateTime> currentDate = DateTime.now().obs;
+  String? dob;
+  List<XFile>? multipleImages;
+  List<String> imageUrls = [];
+  FirebaseStorage firebaseStorage = FirebaseStorage.instance;
+  var authCredential = FirebaseAuth.instance.currentUser;
+
+  uploadToDB() {
+    if (imageUrls.isNotEmpty) {
+      CollectionReference data =
+          FirebaseFirestore.instance.collection("all-data");
+      data.doc(authCredential!.email).collection("images").doc().set({
+        "name": widget.name,
+        "description": widget.description,
+        "cost": widget.cost,
+        "facilities": widget.facilities,
+        "destination": widget.destination,
+        "phone": _phoneController.text,
+        "dob": _dateTimeController.value.text,
+        "gallery_img": FieldValue.arrayUnion(imageUrls),
+      }).whenComplete(
+          () => Fluttertoast.showToast(msg: "Uploaded SUccessfully."));
+      Get.back();
+    }
+  }
+
+  Future uploadImage() async {
+    try {
+      if (multipleImages != null) {
+        AppStyle().progressDialog(context);
+        for (int i = 0; i < multipleImages!.length; i += 1) {
+          // upload to stroage
+          File imageFile = File(multipleImages![i].path);
+          UploadTask uploadTask = firebaseStorage
+              .ref(authCredential!.email)
+              .child(multipleImages![i].name)
+              .putFile(imageFile);
+          TaskSnapshot snapshot = await uploadTask;
+          String imageUrl = await snapshot.ref.getDownloadURL();
+          imageUrls.add(imageUrl);
+        }
+        //upload to Database
+        uploadToDB();
+      } else {
+        Fluttertoast.showToast(msg: "Something is wrong.");
+      }
+    } catch (e) {
+      Fluttertoast.showToast(msg: "Failed");
+      Get.back();
+    }
+  }
+
+  Future multipleImagespicker() async {
     images = await _picker.pickMultiImage();
     setState(() {});
   }
-
-  final ImagePicker _picker = ImagePicker();
-
-  List<XFile>? images;
-
-  Rx<DateTime> currentDate = DateTime.now().obs;
-  String? dob;
 
   _selectedDate(context) async {
     final showDate = await showDatePicker(
@@ -123,7 +177,7 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
                     ),
                   ),
                   child: IconButton(
-                      onPressed: () => multipleImagePicker(),
+                      onPressed: () => multipleImagespicker(),
                       icon: Icon(Icons.add_a_photo)),
                 ),
                 Container(
