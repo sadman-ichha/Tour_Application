@@ -7,6 +7,19 @@ import '../../../widgets/custom_text_field.dart';
 import '../../../widgets/violet_button.dart';
 
 class NavAddLastStep extends StatefulWidget {
+  String? name;
+  String? description;
+  String? cost;
+  String? facilities;
+  String? destination;
+
+  NavAddLastStep(
+      {required this.name,
+      required this.description,
+      required this.cost,
+      required this.facilities,
+      required this.destination});
+
   @override
   State<NavAddLastStep> createState() => _NavAddLastStepState();
 }
@@ -56,7 +69,6 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
                     )),
                 SizedBox(height: 20.h),
                 customTextField("Phone Number", _phoneController),
-                
                 Obx(() {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +78,7 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
                         style: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 18.sp),
                       ),
-                      Container( 
+                      Container(
                         decoration: BoxDecoration(
                           color: Color(0xFFC4C4C4),
                           borderRadius: BorderRadius.all(
@@ -78,7 +90,6 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
                           readOnly: true,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            
                             suffixIcon: IconButton(
                                 onPressed: () => _selectedDate(context),
                                 icon: Image.asset(

@@ -79,6 +79,11 @@ List<GetPage> getPages = [
   GetPage(name: search, page: () => SearchScreen()),
   GetPage(name: detailsscreen, page: () => DetailsScreen()),
   GetPage(name: seeall, page: () => SeeAll()),
-  GetPage(name: navaddlaststep, page: () => NavAddLastStep()),
+  GetPage(
+      name: navaddlaststep,
+      page: () {
+        NavAddLastStep _addLAstStep = Get.arguments;
+        return _addLAstStep;
+      }),
   GetPage(name: userprofile, page: () => ProfileScreen()),
 ];

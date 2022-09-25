@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shelter/ui/route/route.dart';
+import 'package:shelter/ui/views/bottom_nav_controller/pages/nav_add_last_step.dart';
 import 'package:shelter/ui/widgets/custom_text_field.dart';
 import 'package:shelter/ui/widgets/violet_button.dart';
 
@@ -29,12 +30,22 @@ class NavAdd extends StatelessWidget {
                   )),
               SizedBox(height: 20.h),
               customTextField("Owner Name", _nameController),
-              customTextField("Description",_descriptionController),
-              customTextField("Cost",_costController),
-              customTextField("Facilities",_facilityController, maxLine: 3),
-              customTextField("Destination",_destinationController),
+              customTextField("Description", _descriptionController),
+              customTextField("Cost", _costController),
+              customTextField("Facilities", _facilityController, maxLine: 3),
+              customTextField("Destination", _destinationController),
               SizedBox(height: 30.h),
-              VioletButton('Next', () => Get.toNamed(navaddlaststep)),
+              VioletButton(
+                  'Next',
+                  () => Get.toNamed(
+                        navaddlaststep,
+                        arguments: NavAddLastStep(
+                            name: _nameController.text,
+                            description: _descriptionController.text,
+                            cost: _costController.text,
+                            facilities: _facilityController.text,
+                            destination: _destinationController.text),
+                      )),
             ],
           ),
         ),
