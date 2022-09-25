@@ -1,10 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shelter/ui/widgets/custom_text_field.dart';
-import 'package:shelter/ui/widgets/violet_button.dart';
+import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/violet_button.dart';
 
 class NavAddLastStep extends StatefulWidget {
   @override
@@ -12,13 +12,31 @@ class NavAddLastStep extends StatefulWidget {
 }
 
 class _NavAddLastStepState extends State<NavAddLastStep> {
+  TextEditingController _phoneController = TextEditingController();
+  Rx<TextEditingController> _dateTimeController = TextEditingController().obs;
+  Future multipleImagePicker() async {
+    images = await _picker.pickMultiImage();
+    setState(() {});
+  }
+
   final ImagePicker _picker = ImagePicker();
 
   List<XFile>? images;
 
-  Future multipleImagePicker() async {
-    images = await _picker.pickMultiImage();
-    setState(() {});
+  Rx<DateTime> currentDate = DateTime.now().obs;
+  String? dob;
+
+  _selectedDate(context) async {
+    final showDate = await showDatePicker(
+      context: context,
+      initialDate: currentDate.value,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2030),
+    );
+    if (showDate != null && showDate != currentDate) {
+      dob = "${showDate.day}-${showDate.month}-${showDate.year}";
+      _dateTimeController.value.text = dob!;
+    }
   }
 
   @override
@@ -37,8 +55,43 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
                       fontWeight: FontWeight.w300,
                     )),
                 SizedBox(height: 20.h),
-                customTextField("Phone Number"),
-                customTextField('Destination Date & Time'),
+                customTextField("Phone Number", _phoneController),
+                
+                Obx(() {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Destination Date & Time',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 18.sp),
+                      ),
+                      Container( 
+                        decoration: BoxDecoration(
+                          color: Color(0xFFC4C4C4),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(7.r),
+                          ),
+                        ),
+                        child: TextField(
+                          controller: _dateTimeController.value,
+                          readOnly: true,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            
+                            suffixIcon: IconButton(
+                                onPressed: () => _selectedDate(context),
+                                icon: Image.asset(
+                                  'assets/icons/calendar.png',
+                                  width: 22.0.w,
+                                  height: 22.0.h,
+                                )),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }),
                 Align(
                   alignment: AlignmentDirectional.topStart,
                   child: Text(
@@ -72,7 +125,6 @@ class _NavAddLastStepState extends State<NavAddLastStep> {
                           padding: EdgeInsets.only(right: 10.w),
                           child: Container(
                               width: 150.0.w,
-                              
                               child: images?.length == null
                                   ? null
                                   : Image.file(

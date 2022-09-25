@@ -36,7 +36,7 @@ class UserFormScreen extends StatelessWidget {
 
     if (showDate != null && showDate != currentDate) {
       dob = "${showDate.day}-${showDate.month}-${showDate.year}";
-      _dobController.value.text = dob!;
+       _dobController.value.text = dob!;
     }
   }
 

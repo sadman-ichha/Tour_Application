@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget customTextField(String title, {maxLine}) {
+Widget customTextField(String title, TextEditingController controller,
+    {maxLine}) {
   return Column(
-     crossAxisAlignment: CrossAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
         title,
@@ -15,15 +16,15 @@ Widget customTextField(String title, {maxLine}) {
           borderRadius: BorderRadius.all(
             Radius.circular(7.r),
           ),
-      ),
-      child: 
-      TextField(
+        ),
+        child: TextField(
+          controller: controller,
           maxLines: maxLine,
           decoration: InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(left: 20.0),
           ),
-      ),
+        ),
       ),
     ],
   );

@@ -8,17 +8,19 @@ import 'package:shelter/ui/widgets/custom_text_field.dart';
 import 'package:shelter/ui/widgets/violet_button.dart';
 
 class NavAdd extends StatelessWidget {
-  const NavAdd({Key? key}) : super(key: key);
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _descriptionController = TextEditingController();
+  TextEditingController _costController = TextEditingController();
+  TextEditingController _facilityController = TextEditingController();
+  TextEditingController _destinationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: SingleChildScrollView(
         child: Padding(
-          padding:  EdgeInsets.only(left: 25.0.w,right: 25.0.w,top: 10.0.h),
+          padding: EdgeInsets.only(left: 25.0.w, right: 25.0.w, top: 10.0.h),
           child: Column(
-            
             children: [
               Text("Fill out the form and start the journey",
                   style: TextStyle(
@@ -26,13 +28,13 @@ class NavAdd extends StatelessWidget {
                     fontWeight: FontWeight.w300,
                   )),
               SizedBox(height: 20.h),
-              customTextField("Owner Name" ),
-              customTextField("Description"),
-              customTextField("Cost"),
-              customTextField("Facilities",maxLine: 3),
-              customTextField("Destination"),
-               SizedBox(height: 30.h),
-              VioletButton('Next', ()=> Get.toNamed(navaddlaststep)),
+              customTextField("Owner Name", _nameController),
+              customTextField("Description",_descriptionController),
+              customTextField("Cost",_costController),
+              customTextField("Facilities",_facilityController, maxLine: 3),
+              customTextField("Destination",_destinationController),
+              SizedBox(height: 30.h),
+              VioletButton('Next', () => Get.toNamed(navaddlaststep)),
             ],
           ),
         ),
